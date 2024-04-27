@@ -45,8 +45,8 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const data = req.body;
     try {
         const owner = yield users_1.default.find({ name: data.name, email: data.email });
-        //console.log(owner[0])
-        if (!owner) {
+        // console.log(owner)
+        if (!owner.length) {
             const message = { message: "再檢查一次帳密" };
             (0, handleError_1.default)(res, message);
         }
