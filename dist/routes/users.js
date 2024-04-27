@@ -46,10 +46,16 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         const owner = yield users_1.default.find({ name: data.name, email: data.email });
         //console.log(owner[0])
-        res.status(200).send({
-            status: "success",
-            data: owner[0]
-        });
+        if (!owner) {
+            const message = { message: "再檢查一次帳密" };
+            (0, handleError_1.default)(res, message);
+        }
+        else {
+            res.status(200).send({
+                status: "success",
+                data: owner[0]
+            });
+        }
     }
     catch (error) {
         res.status(400).send({

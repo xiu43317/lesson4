@@ -32,10 +32,15 @@ router.post('/login',async(req,res)=>{
     try{
         const owner = await User.find({name:data.name,email:data.email})
         //console.log(owner[0])
-        res.status(200).send({
-            status:"success",
-            data:owner[0]
-        })
+        if(!owner){
+            const message = {message:"再檢查一次帳密"}
+            handleError(res,message)
+        }else{
+            res.status(200).send({
+                status:"success",
+                data:owner[0]
+            })
+        }
     }catch(error){
         res.status(400).send({
             status:"false",
