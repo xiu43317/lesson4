@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import posts from './routes/posts'
 import users from './routes/users'
+import cors from 'cors'
 
 dotenv.config({path:"./config.env"})
 const app = express()
@@ -11,9 +12,9 @@ const port = 3005
 const DB = process.env.DATABASE.replace('<password>',process.env.DATABASE_PASSWORD)
 mongoose
   .connect(DB)
-  //.connect('mongodb://localhost:27017/homework')
   .then(() => console.log("資料庫連線成功"))
-
+  
+ app.use(cors())
  app.use(express.json())
  app.use('/',posts)
  app.use('/',users)
