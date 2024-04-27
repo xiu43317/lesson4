@@ -26,6 +26,22 @@ router.post('/users',async(req,res)=>{
         handleError(res,error)
     }
 })
+// 假登入
+router.post('/login',async(req,res)=>{
+    const data = req.body
+    try{
+        const owner = User.find({name:data.name,email:data.email})
+        res.status(200).send({
+            status:"success",
+            data:owner
+        })
+    }catch(error){
+        res.status(400).send({
+            status:"false",
+            error
+        })
+    }
+})
 router.delete('/users/:user_id',(req,res)=>{})
 router.delete('/users',()=>{})
 router.patch('/users/:user_id',(req,res)=>{})

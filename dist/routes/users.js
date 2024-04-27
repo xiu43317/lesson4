@@ -40,6 +40,23 @@ router.post('/users', (req, res) => __awaiter(void 0, void 0, void 0, function* 
         (0, handleError_1.default)(res, error);
     }
 }));
+// 假登入
+router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const data = req.body;
+    try {
+        const owner = users_1.default.find({ name: data.name, email: data.email });
+        res.status(200).send({
+            status: "success",
+            data: owner
+        });
+    }
+    catch (error) {
+        res.status(400).send({
+            status: "false",
+            error
+        });
+    }
+}));
 router.delete('/users/:user_id', (req, res) => { });
 router.delete('/users', () => { });
 router.patch('/users/:user_id', (req, res) => { });
