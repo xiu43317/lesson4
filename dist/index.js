@@ -15,6 +15,7 @@ const port = 3005;
 const DB = process.env.DATABASE.replace('<password>', process.env.DATABASE_PASSWORD);
 mongoose_1.default
     .connect(DB)
+    // .connect('mongodb://localhost:27017/homework')
     .then(() => console.log("資料庫連線成功"));
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());

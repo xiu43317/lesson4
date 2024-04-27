@@ -44,7 +44,7 @@ router.post('/users', (req, res) => __awaiter(void 0, void 0, void 0, function* 
 router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = req.body;
     try {
-        const owner = users_1.default.find({ name: data.name, email: data.email });
+        const owner = yield users_1.default.find({ name: data.name, email: data.email });
         res.status(200).send({
             status: "success",
             data: owner

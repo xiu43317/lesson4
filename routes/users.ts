@@ -30,7 +30,7 @@ router.post('/users',async(req,res)=>{
 router.post('/login',async(req,res)=>{
     const data = req.body
     try{
-        const owner = User.find({name:data.name,email:data.email})
+        const owner = await User.find({name:data.name,email:data.email})
         res.status(200).send({
             status:"success",
             data:owner
