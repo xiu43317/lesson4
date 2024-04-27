@@ -45,9 +45,10 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const data = req.body;
     try {
         const owner = yield users_1.default.find({ name: data.name, email: data.email });
+        //console.log(owner[0])
         res.status(200).send({
             status: "success",
-            data: owner
+            data: owner[0]
         });
     }
     catch (error) {

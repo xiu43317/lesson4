@@ -31,9 +31,10 @@ router.post('/login',async(req,res)=>{
     const data = req.body
     try{
         const owner = await User.find({name:data.name,email:data.email})
+        //console.log(owner[0])
         res.status(200).send({
             status:"success",
-            data:owner
+            data:owner[0]
         })
     }catch(error){
         res.status(400).send({
