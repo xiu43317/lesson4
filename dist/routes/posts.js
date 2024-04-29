@@ -28,7 +28,8 @@ router.post('/posts', (req, res) => __awaiter(void 0, void 0, void 0, function* 
             const newPost = yield posts_1.default.create({
                 name: data.name,
                 content: data.content.trim(),
-                image: data.image ? data.image : null
+                image: data.image ? data.image : null,
+                photo: data.photo ? data.photo : null
             });
             (0, handleSuccess_1.default)(res, newPost);
         }

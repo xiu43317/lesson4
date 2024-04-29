@@ -15,11 +15,14 @@ router.get('/users',async(req,res)=>{
 })
 router.post('/users',async(req,res)=>{
     const data = req.body
+    let defaultPhoto = ""
+    if(!data.photo) defaultPhoto = "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
+    else defaultPhoto = data.photo
     try{
         const newUser = await User.create({
             name:data.name,
             email:data.email,
-            photo:data.photo
+            photo:defaultPhoto
         })
         handleSuccess(res,newUser)
     }catch(error){

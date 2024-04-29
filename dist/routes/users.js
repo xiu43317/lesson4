@@ -28,11 +28,16 @@ router.get('/users', (req, res) => __awaiter(void 0, void 0, void 0, function* (
 }));
 router.post('/users', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = req.body;
+    let defaultPhoto = "";
+    if (!data.photo)
+        defaultPhoto = "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=";
+    else
+        defaultPhoto = data.photo;
     try {
         const newUser = yield users_1.default.create({
             name: data.name,
             email: data.email,
-            photo: data.photo
+            photo: defaultPhoto
         });
         (0, handleSuccess_1.default)(res, newUser);
     }

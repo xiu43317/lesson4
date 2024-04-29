@@ -17,7 +17,8 @@ router.post('/posts',async(req,res)=>{
           const newPost = await Post.create({
             name: data.name,
             content: data.content.trim(),
-            image:data.image?data.image:null
+            image:data.image?data.image:null,
+            photo:data.photo?data.photo:null
           });
           handleSuccess(res,newPost)
         } else {

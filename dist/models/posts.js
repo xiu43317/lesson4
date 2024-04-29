@@ -11,12 +11,11 @@ const postSchema = new mongoose_1.default.Schema({
     },
     image: {
         type: String,
-        default: "",
+        default: null,
     },
     createdAt: {
         type: Date,
         default: Date.now,
-        select: false,
     },
     name: {
         type: String,
@@ -26,6 +25,9 @@ const postSchema = new mongoose_1.default.Schema({
         type: Number,
         default: 0,
     },
+    photo: {
+        type: String
+    }
 }, {
     versionKey: false
 });
